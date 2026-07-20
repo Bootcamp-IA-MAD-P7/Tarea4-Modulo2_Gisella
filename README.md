@@ -103,34 +103,35 @@ Los modelos ensemble logran una mejor generalización porque permiten atacar y c
 
 ## 5. Explicación de modelos de Ensemble
 
-1. AdaBoost (Adaptive Boosting)
-   Mecanismo: Ajusta pesos a los datos en cada iteración. Entrena secuencialmente clasificadores muy simples (stumps o árboles de un solo nivel). En cada paso, aumenta el peso de las muestras clasificadas incorrectamente para que el siguiente modelo se enfoque en ellas.
-   Ventajas: Es fácil de implementar, computacionalmente rápido y requiere pocos hiperparámetros.
-   Casos de uso comunes: Detección de rostros (ej. algoritmo Viola-Jones), clasificación binaria de texto y filtrado de spam.
-2. Gradient Boosting (Gradient Boosting Machines - GBM)
-   Mecanismo: A diferencia de AdaBoost, no ajusta el peso de las muestras, sino que entrena cada nuevo árbol sobre los residuos (los errores directos) del conjunto de árboles anteriores utilizando el algoritmo de Descenso de Gradiente para minimizar la función de pérdida.
-   Ventajas: Muy alta precisión y flexibilidad para trabajar con diversas funciones de pérdida (regresión, clasificación, ranking).
-   Casos de uso comunes: Predicción de morosidad crediticia, análisis de riesgo financiero y motores de recomendación.
-3. XGBoost (eXtreme Gradient Boosting)
-   Mecanismo: Es una implementación altamente optimizada y eficiente de Gradient Boosting. Utiliza regularización (L1 y L2) para evitar el sobreajuste, procesamiento en paralelo de columnas, poda de árboles previa y manejo inteligente de valores nulos.
-   Ventajas: Excepcional velocidad de cómputo, excelente rendimiento predictivo y muy robusto frente a datos faltantes. Es el algoritmo líder en competencias de Data Science (Kaggle).
-   Casos de uso comunes: Detección de fraudes financieros, predicción de fuga de clientes (churn), y cualquier problema de datos tabulares a gran escala.
-4. LightGBM (Light Gradient Boosting Machine)
-   Mecanismo: Algoritmo desarrollado por Microsoft que utiliza una estrategia de crecimiento de árbol orientada por hojas (Leaf-wise) en lugar de nivel por nivel (Level-wise). Además, aplica las técnicas GOSS (para filtrar instancias por gradiente) y EFB (para agrupar variables dispersas).
-   Ventajas: Extrema velocidad de entrenamiento y menor consumo de memoria manteniendo la misma o mejor precisión que XGBoost.
-   Casos de uso comunes: Procesamiento de Big Data, análisis en tiempo real y sistemas de recomendación con millones de registros.
-5. CatBoost (Categorical Boosting)
-   Mecanismo: Desarrollado por Yandex, está diseñado específicamente para tratar variables categóricas de forma nativa mediante técnicas de Target Encoding que evitan la fuga de datos (Data Leakage).
-   Ventajas: Excelente rendimiento "de fábrica" con pocos ajustes de hiperparámetros y manejo directo de texto/categorías sin necesidad de preprocesamiento manual (como One-Hot Encoding).
-   Casos de uso comunes: Análisis de datos bancarios, comercio electrónico, marketing predictivo y datos con alta presencia de variables cualitativas.
-6. Voting Classifier
-   Mecanismo: Combina las predicciones de varios modelos de Machine Learning (que pueden ser heterogéneos) mediante una regla de votación simple: Hard Voting (elige la clase que recibe más votos) o Soft Voting (promedia las probabilidades predichas por cada modelo).
-   Ventajas: Simple de entender e implementar; reduce sustancialmente el riesgo de que un solo modelo falle.
-   Casos de uso comunes: Tareas de clasificación general donde se cuenta con varios modelos competitivos de diversa naturaleza (ej. SVM + Random Forest + Regresión Logística).
-7. Stacking Classifier
-   Mecanismo: Utiliza un enfoque en dos niveles: entrena múltiples modelos base (Nivel 0) sobre los datos y luego utiliza sus predicciones finales como variables de entrada para un meta-modelo (Nivel 1), el cual aprende a combinar los resultados óptimamente.
-   Ventajas: Aprovecha las fortalezas individuales de distintos algoritmos superando el rendimiento de las votaciones promedio tradicionales.
-   Casos de uso comunes: Competencias de analítica avanzada donde cada décima de precisión cuenta y problemas complejos con patrones no lineales diversos.
+###1. AdaBoost (Adaptive Boosting)
+
+- **Mecanismo:** Ajusta pesos a los datos en cada iteración. Entrena secuencialmente clasificadores muy simples (stumps o árboles de un solo nivel). En cada paso, aumenta el peso de las muestras clasificadas incorrectamente para que el siguiente modelo se enfoque en ellas.
+- ** Ventajas:** Es fácil de implementar, computacionalmente rápido y requiere pocos hiperparámetros.
+- **Casos de uso comunes:** Detección de rostros (ej. algoritmo Viola-Jones), clasificación binaria de texto y filtrado de spam.
+  ###2. Gradient Boosting (Gradient Boosting Machines - GBM)
+- **Mecanismo:** A diferencia de AdaBoost, no ajusta el peso de las muestras, sino que entrena cada nuevo árbol sobre los residuos (los errores directos) del conjunto de árboles anteriores utilizando el algoritmo de Descenso de Gradiente para minimizar la función de pérdida.
+- **Ventajas:** Muy alta precisión y flexibilidad para trabajar con diversas funciones de pérdida (regresión, clasificación, ranking).
+- **Casos de uso comunes:** Predicción de morosidad crediticia, análisis de riesgo financiero y motores de recomendación.
+  ###3. XGBoost (eXtreme Gradient Boosting)
+- **Mecanismo:** Es una implementación altamente optimizada y eficiente de Gradient Boosting. Utiliza regularización (L1 y L2) para evitar el sobreajuste, procesamiento en paralelo de columnas, poda de árboles previa y manejo inteligente de valores nulos.
+- **Ventajas:** Excepcional velocidad de cómputo, excelente rendimiento predictivo y muy robusto frente a datos faltantes. Es el algoritmo líder en competencias de Data Science (Kaggle).
+- **Casos de uso comunes:** Detección de fraudes financieros, predicción de fuga de clientes (churn), y cualquier problema de datos tabulares a gran escala.
+  ###4. LightGBM (Light Gradient Boosting Machine)
+- **Mecanismo:** Algoritmo desarrollado por Microsoft que utiliza una estrategia de crecimiento de árbol orientada por hojas (Leaf-wise) en lugar de nivel por nivel (Level-wise). Además, aplica las técnicas GOSS (para filtrar instancias por gradiente) y EFB (para agrupar variables dispersas).
+- **Ventajas:** Extrema velocidad de entrenamiento y menor consumo de memoria manteniendo la misma o mejor precisión que XGBoost.
+- **Casos de uso comunes:** Procesamiento de Big Data, análisis en tiempo real y sistemas de recomendación con millones de registros.
+  ###5. CatBoost (Categorical Boosting)
+- **Mecanismo:** Desarrollado por Yandex, está diseñado específicamente para tratar variables categóricas de forma nativa mediante técnicas de Target Encoding que evitan la fuga de datos (Data Leakage).
+- **Ventajas:** Excelente rendimiento "de fábrica" con pocos ajustes de hiperparámetros y manejo directo de texto/categorías sin necesidad de preprocesamiento manual (como One-Hot Encoding).
+- **Casos de uso comunes:** Análisis de datos bancarios, comercio electrónico, marketing predictivo y datos con alta presencia de variables cualitativas.
+  ###6. Voting Classifier
+- **Mecanismo:** Combina las predicciones de varios modelos de Machine Learning (que pueden ser heterogéneos) mediante una regla de votación simple: Hard Voting (elige la clase que recibe más votos) o Soft Voting (promedia las probabilidades predichas por cada modelo).
+- **Ventajas:** Simple de entender e implementar; reduce sustancialmente el riesgo de que un solo modelo falle.
+- **Casos de uso comunes:** Tareas de clasificación general donde se cuenta con varios modelos competitivos de diversa naturaleza (ej. SVM + Random Forest + Regresión Logística).
+  ###7. Stacking Classifier
+- **Mecanismo:** Utiliza un enfoque en dos niveles: entrena múltiples modelos base (Nivel 0) sobre los datos y luego utiliza sus predicciones finales como variables de entrada para un meta-modelo (Nivel 1), el cual aprende a combinar los resultados óptimamente.
+- **Ventajas:** Aprovecha las fortalezas individuales de distintos algoritmos superando el rendimiento de las votaciones promedio tradicionales.
+  Casos de uso comunes: Competencias de analítica avanzada donde cada décima de precisión cuenta y problemas complejos con patrones no lineales diversos.
 
 ````python# Importación de librerías
 from sklearn.datasets import make_classification
